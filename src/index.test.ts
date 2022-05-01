@@ -23,10 +23,39 @@ describe("Error handling", () => {
 });
 
 describe("Challenge", () => {
-  test("It returns true if the string is a Haiku", () => {
-    haikuCalculator.calculateHaiku(
-      "Slow moving river. / Flash of iridescent blue. / A kingfisher strikes"
-    );
-    expect(haikuCalculator.isHaiku).toBe(true);
+  describe("Is Haiku", () => {
+    test("It returns true if the string is a Haiku", () => {
+      haikuCalculator.calculateHaiku(
+        "Slow moving river. / Flash of iridescent blue. / A kingfisher strikes"
+      );
+      expect(haikuCalculator.isHaiku).toBe(true);
+    });
+    test("It returns true if the string is a Haiku", () => {
+      haikuCalculator.calculateHaiku(
+        "Lullaby of rain / another pinch of saffron / in the pumpkin soup"
+      );
+      expect(haikuCalculator.isHaiku).toBe(true);
+    });
+    test("It returns true if the string is a Haiku (with apostrophe)", () => {
+      haikuCalculator.calculateHaiku(
+        "Deep end of winter / a swan’s luminosity / enters the river"
+      );
+      expect(haikuCalculator.isHaiku).toBe(true);
+    });
+    test("It returns true if the string is a Haiku", () => {
+      haikuCalculator.calculateHaiku(
+        "night of small colour / a part of the underworld / becomes one heron"
+      );
+      expect(haikuCalculator.isHaiku).toBe(true);
+    });
+  });
+  describe("Is not Haiku", () => {
+    test("It returns false if the string is a Haiku", () => {
+      haikuCalculator.calculateHaiku(
+        "Lullaby of wet rain / another pinch of saffron / in the pumpkin soup"
+      );
+      expect(haikuCalculator.isHaiku).toBe(false);
+      expect(haikuCalculator.syllables).toEqual([6, 7, 5]);
+    });
   });
 });
