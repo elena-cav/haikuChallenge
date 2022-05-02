@@ -1,4 +1,4 @@
-import SyllablesCounter from "./syllables-counter";
+import SyllablesCounter from "../syllables-counter";
 
 describe("VCCV", () => {
   test("It complies with the vccv rule", () => {

@@ -1,4 +1,4 @@
-import haikuCalculator from ".";
+import haikuCalculator from "..";
 
 describe("Error handling", () => {
   test("If input is not a string, it throws an error", () => {
@@ -57,5 +57,14 @@ describe("Challenge", () => {
       expect(haikuCalculator.isHaiku).toBe(false);
       expect(haikuCalculator.syllables).toEqual([6, 7, 5]);
     });
+  });
+});
+
+describe("Text to speech", () => {
+  test("It can read out the input if it is a Haiku", () => {
+    haikuCalculator.calculateHaiku(
+      "night of small colour / a part of the underworld / becomes one heron"
+    );
+    haikuCalculator.speak();
   });
 });
