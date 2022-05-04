@@ -2,7 +2,6 @@ import HaikuCalculator from "..";
 import ErrorHandler from "../error-handler";
 import SyllablesCounter from "../syllables-counter";
 import TextToSpeech from "../text-to-speech";
-const { exec } = require("child_process");
 const mockExec = jest.fn();
 const TextToSpeechMock = jest.fn();
 jest.mock("../text-to-speech", () => {
@@ -12,7 +11,6 @@ jest.mock("../text-to-speech", () => {
 });
 
 beforeEach(() => {
-  // TextToSpeech.mockClear();
   TextToSpeechMock.mockClear();
 });
 const haikuCalculator = new HaikuCalculator(
