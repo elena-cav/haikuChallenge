@@ -1,9 +1,11 @@
-const { exec } = require("child_process");
-
 class TextToSpeech {
+  private _exec;
+  constructor(exec) {
+    this._exec = exec;
+  }
   say(haiku) {
     const withHyphens = haiku.replace(/\//g, "-");
-    exec(`say ${withHyphens} -r 150`);
+    this._exec(`say ${withHyphens} -r 150`);
   }
 }
 

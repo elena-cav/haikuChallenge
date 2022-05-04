@@ -1,12 +1,9 @@
-import ErrorHandler from "./error-handler";
-import SyllablesCounter from "./syllables-counter";
-import TextToSpeech from "./text-to-speech";
 class HaikuCalculator {
   private _syllables: Number[];
   private _isHaiku: Boolean = false;
-  private _errorHandler: ErrorHandler;
-  private _syllablesCounter: SyllablesCounter;
-  private _textToSpeech: TextToSpeech;
+  private _errorHandler;
+  private _syllablesCounter;
+  private _textToSpeech;
   private _input: String;
   constructor(errorHandler, syllablesCounter, textToSpeech) {
     this._syllables = [];
@@ -41,9 +38,5 @@ class HaikuCalculator {
     return this._isHaiku;
   }
 }
-const haikuCalculator = new HaikuCalculator(
-  new ErrorHandler(),
-  new SyllablesCounter(),
-  new TextToSpeech()
-);
-export default haikuCalculator;
+
+export default HaikuCalculator;

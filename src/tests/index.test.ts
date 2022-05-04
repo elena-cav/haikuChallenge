@@ -1,5 +1,25 @@
-import haikuCalculator from "..";
+import HaikuCalculator from "..";
+import ErrorHandler from "../error-handler";
+import SyllablesCounter from "../syllables-counter";
+import TextToSpeech from "../text-to-speech";
+const { exec } = require("child_process");
+const mockExec = jest.fn();
+const TextToSpeechMock = jest.fn();
+jest.mock("../text-to-speech", () => {
+  return jest.fn().mockImplementation(() => {
+    return { say: TextToSpeechMock };
+  });
+});
 
+beforeEach(() => {
+  // TextToSpeech.mockClear();
+  TextToSpeechMock.mockClear();
+});
+const haikuCalculator = new HaikuCalculator(
+  new ErrorHandler(),
+  new SyllablesCounter(),
+  new TextToSpeech(() => {})
+);
 describe("Error handling", () => {
   test("If input is not a string, it throws an error", () => {
     expect(() => {
@@ -62,9 +82,17 @@ describe("Challenge", () => {
 
 describe("Text to speech", () => {
   test("It can read out the input if it is a Haiku", () => {
+    const haikuCalculator = new HaikuCalculator(
+      new ErrorHandler(),
+      new SyllablesCounter(),
+      new TextToSpeech(mockExec)
+    );
     haikuCalculator.calculateHaiku(
       "night of small colour / a part of the underworld / becomes one heron"
     );
     haikuCalculator.speak();
+    expect(TextToSpeechMock.mock.calls[0][0]).toEqual(
+      "night of small colour / a part of the underworld / becomes one heron"
+    );
   });
 });
