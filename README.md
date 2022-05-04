@@ -12,3 +12,11 @@ Example:
 For the following poem:
 "Slow moving river. / Flash of iridescent blue. / A kingfisher strikes"
 the syllable count is 5, 7 and 5 respectively. Therefore your algorithm would return true
+
+## Instructions
+
+- Run npm install
+- Run tests:
+  - cd into the src folder
+  - npm run test or npm run test:watch
+- If you would like to test the text-to-speech functionality run ts-node text-to-speech-play and change the input to anything you would like.
